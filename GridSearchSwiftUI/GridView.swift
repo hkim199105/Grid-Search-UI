@@ -44,20 +44,28 @@ class GridViewModel: ObservableObject {
 struct GridView: View {
     
     @StateObject var vm = GridViewModel()
+    @State var searchText = ""
+    @State var isSearching = false
     
     var body: some View {
         NavigationView {
             ScrollView {
-                LazyVGrid(columns: [
-                    GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16, alignment: .top),
-                    GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16, alignment: .top),
-                    GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16, alignment: .top)
-                ], alignment: .leading, spacing: 16, content: {
-                    ForEach(vm.results, id: \.self) { app in
-                        AppInfo(app: app)
-                    }
-                })
-                .padding(.horizontal, 12)
+                VStack {
+                    SearchBar(searchText: $searchText, isSearching: $isSearching)
+                    
+                    LazyVGrid(columns: [
+                        GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16, alignment: .top),
+                        GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16, alignment: .top),
+                        GridItem(.flexible(minimum: 50, maximum: 200), spacing: 16, alignment: .top)
+                    ], alignment: .leading, spacing: 16, content: {
+                        ForEach(vm.results.filter({
+                            $0.name.contains(searchText) || searchText.isEmpty
+                        }), id: \.self) { app in
+                            AppInfo(app: app)
+                        }
+                    })
+                    .padding(.horizontal)
+                }
             }
             .navigationTitle("Grid Search")
         }
@@ -91,6 +99,59 @@ struct AppInfo: View {
             Text(app.copyright)
                 .font(.system(size: 9, weight: .regular))
                 .foregroundColor(.gray)
+        }
+    }
+}
+
+struct SearchBar: View {
+    
+    @Binding var searchText: String
+    @Binding var isSearching: Bool
+    
+    var body: some View {
+        HStack {
+            HStack {
+                TextField("Search apps", text:$searchText)
+                    .padding()
+                    .padding(.horizontal, 32)
+            }
+            .background(Color(.systemGray5))
+            .cornerRadius(6)
+            .onTapGesture(perform: {
+                isSearching = true
+            })
+            .overlay(
+                HStack {
+                    Image(systemName: "magnifyingglass")
+                    Spacer()
+                    
+                    if isSearching {
+                        Button(action: { searchText = "" } , label: {
+                            Image(systemName: "xmark.circle.fill")
+                                .padding(.vertical)
+                        })
+                    }
+                }
+                .padding(.horizontal)
+                .foregroundColor(.gray)
+            )
+            .transition(.move(edge: .trailing))
+            .animation(.spring())
+            .padding(.horizontal)
+            .padding(.bottom)
+            
+            if isSearching {
+                Button("cancel") {
+                    isSearching = false
+                    searchText = ""
+                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                }
+                .padding(.trailing)
+                .padding(.leading, -16)
+                .padding(.bottom)
+                .transition(.move(edge: .trailing))
+                .animation(.spring())
+            }
         }
     }
 }
