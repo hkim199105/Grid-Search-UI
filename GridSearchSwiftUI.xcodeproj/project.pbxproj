@@ -3,16 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		A3FC2AA52573B17400458488 /* GridSearchSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FC2AA42573B17400458488 /* GridSearchSwiftUIApp.swift */; };
-		A3FC2AA72573B17400458488 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FC2AA62573B17400458488 /* ContentView.swift */; };
+		A3FC2AA72573B17400458488 /* GridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FC2AA62573B17400458488 /* GridView.swift */; };
 		A3FC2AA92573B17600458488 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3FC2AA82573B17600458488 /* Assets.xcassets */; };
 		A3FC2AAC2573B17600458488 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A3FC2AAB2573B17600458488 /* Preview Assets.xcassets */; };
 		A3FC2AB72573B17600458488 /* GridSearchSwiftUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FC2AB62573B17600458488 /* GridSearchSwiftUITests.swift */; };
 		A3FC2AC22573B17600458488 /* GridSearchSwiftUIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3FC2AC12573B17600458488 /* GridSearchSwiftUIUITests.swift */; };
+		A3FC2AD42573BAC300458488 /* KingfisherSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = A3FC2AD32573BAC300458488 /* KingfisherSwiftUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,7 +36,7 @@
 /* Begin PBXFileReference section */
 		A3FC2AA12573B17400458488 /* GridSearchSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GridSearchSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A3FC2AA42573B17400458488 /* GridSearchSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridSearchSwiftUIApp.swift; sourceTree = "<group>"; };
-		A3FC2AA62573B17400458488 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A3FC2AA62573B17400458488 /* GridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridView.swift; sourceTree = "<group>"; };
 		A3FC2AA82573B17600458488 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A3FC2AAB2573B17600458488 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A3FC2AAD2573B17600458488 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -52,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A3FC2AD42573BAC300458488 /* KingfisherSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,7 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				A3FC2AA42573B17400458488 /* GridSearchSwiftUIApp.swift */,
-				A3FC2AA62573B17400458488 /* ContentView.swift */,
+				A3FC2AA62573B17400458488 /* GridView.swift */,
 				A3FC2AA82573B17600458488 /* Assets.xcassets */,
 				A3FC2AAD2573B17600458488 /* Info.plist */,
 				A3FC2AAA2573B17600458488 /* Preview Content */,
@@ -146,6 +148,9 @@
 			dependencies = (
 			);
 			name = GridSearchSwiftUI;
+			packageProductDependencies = (
+				A3FC2AD32573BAC300458488 /* KingfisherSwiftUI */,
+			);
 			productName = GridSearchSwiftUI;
 			productReference = A3FC2AA12573B17400458488 /* GridSearchSwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -217,6 +222,9 @@
 				Base,
 			);
 			mainGroup = A3FC2A982573B17400458488;
+			packageReferences = (
+				A3FC2AD22573BAC300458488 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = A3FC2AA22573B17400458488 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,7 +267,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A3FC2AA72573B17400458488 /* ContentView.swift in Sources */,
+				A3FC2AA72573B17400458488 /* GridView.swift in Sources */,
 				A3FC2AA52573B17400458488 /* GridSearchSwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -574,6 +582,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A3FC2AD22573BAC300458488 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.15.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A3FC2AD32573BAC300458488 /* KingfisherSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A3FC2AD22573BAC300458488 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = KingfisherSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A3FC2A992573B17400458488 /* Project object */;
 }

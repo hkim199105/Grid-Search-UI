@@ -11,7 +11,7 @@ import SwiftUI
 struct GridSearchSwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            GridView()
         }
     }
 }
